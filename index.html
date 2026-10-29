@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HelloPrompteur Studio Pro — Notre force propriétaire</title>
+  <meta name="description" content="HelloPrompteur Studio Pro : outil propriétaire. Nos équipes jusqu’à 90 % plus efficaces face à Autocue Explorer, Autocue Pioneer, QPro et Autoscript WinPlus IP." />
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --bg-elev: #121214;
+      --bg-card: #18181b;
+      --line: rgba(255, 255, 255, 0.09);
+      --text: #f4f4f5;
+      --muted: #a1a1aa;
+      --soft: #71717a;
+      --orange: #f39c12;
+      --orange-2: #e67e22;
+      --red-dot: #e74c3c;
+      --ok: #34c759;
+      --radius: 14px;
+      --font: "Segoe UI", Inter, system-ui, sans-serif;
+      --display: Outfit, "Segoe UI", system-ui, sans-serif;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.55;
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -18%, rgba(243, 156, 18, 0.16), transparent 55%),
+        radial-gradient(ellipse 50% 40% at 100% 20%, rgba(231, 76, 60, 0.06), transparent 50%),
+        var(--bg);
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--orange); }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 10, 11, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+    }
+    .brand-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--display);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .brand-mini .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--red-dot);
+      display: inline-block;
+    }
+    .topnav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .topnav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 7px 10px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+    }
+    .topnav a:hover { color: var(--text); border-color: var(--line); background: var(--bg-card); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 10px;
+      padding: 12px 18px;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .btn-primary { background: linear-gradient(135deg, var(--orange), var(--orange-2)); color: #111; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .hero { padding: 56px 0 28px; text-align: center; }
+    .eyebrow {
+      display: inline-flex;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4.8vw, 3.15rem);
+      line-height: 1.1;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .accent { color: var(--orange); }
+    .lead {
+      max-width: 40rem;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .pill {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 6px 12px;
+    }
+    .hero-shot {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+      background: #000;
+    }
+    .hero-shot img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+    .feature-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #000;
+    }
+    .caption {
+      font-size: 12px;
+      color: var(--soft);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    section { padding: 56px 0; }
+    section.alt {
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.015), transparent);
+    }
+    .section-head {
+      max-width: 42rem;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+    .section-head h2 {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 3vw, 2.05rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 880px) {
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .topnav { display: none; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .card h3 {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      margin: 0 0 8px;
+    }
+    .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .card .ico {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      background: rgba(243,156,18,0.12);
+      color: var(--orange);
+      font-weight: 800;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .promise {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 880px) { .promise { grid-template-columns: 1fr 1fr; } }
+    .promise .card { text-align: center; }
+    .demo-video {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.4);
+    }
+    .demo-video video {
+      display: block;
+      width: 100%;
+      max-height: min(70vh, 640px);
+      background: #000;
+    }
+    .demo-video-meta {
+      padding: 16px 18px 18px;
+      background: var(--bg-card);
+      border-top: 1px solid var(--line);
+    }
+    .demo-video-meta h3 {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      margin: 0 0 6px;
+    }
+    .demo-video-meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .promise .num {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      color: var(--orange);
+      margin: 0 0 6px;
+      font-weight: 800;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: center;
+      margin: 22px 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      background: var(--bg-elev);
+    }
+    .feature.reverse { grid-template-columns: 0.9fr 1.1fr; }
+    .feature.reverse .feature-copy { order: 2; }
+    .feature.reverse .feature-media { order: 1; }
+    @media (max-width: 880px) {
+      .feature, .feature.reverse { grid-template-columns: 1fr; }
+      .feature.reverse .feature-copy,
+      .feature.reverse .feature-media { order: initial; }
+    }
+    .feature-copy h3 {
+      font-family: var(--display);
+      font-size: 1.3rem;
+      margin: 0 0 10px;
+    }
+    .feature-copy p { color: var(--muted); margin: 0 0 10px; }
+    .feature-copy ul { margin: 0; padding-left: 1.1rem; }
+    .feature-copy li { margin: 6px 0; color: var(--muted); }
+    .feature-copy li strong { color: var(--text); }
+    .feature-media {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #000;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+    .feature-media img[src$=".svg"] {
+      width: 100%;
+      height: auto;
+      background: #0a0a0b;
+    }
+    .feature-media.photo-fit {
+      /* Fond cadre = même noir studio que les photos produit (pas de halo orange CSS) */
+      background: #000;
+    }
+    .feature-media.photo-fit img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+    }
+    .photo-choice {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 10px;
+    }
+    .photo-choice button {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--bg-card);
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+    .photo-choice button:hover { color: var(--text); border-color: rgba(243, 156, 18, 0.35); }
+    .photo-choice button.is-active {
+      color: #111;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      border-color: transparent;
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+    @media (max-width: 880px) {
+      .spec-grid { grid-template-columns: 1fr; }
+    }
+    .spec-item {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .spec-item strong {
+      display: block;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .spec-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .hw-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+    }
+
+    .punch {
+      border: 1px solid rgba(243,156,18,0.4);
+      background:
+        radial-gradient(ellipse 80% 100% at 0% 0%, rgba(243,156,18,0.16), transparent 55%),
+        var(--bg-card);
+      border-radius: calc(var(--radius) + 4px);
+      padding: 28px 24px;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .punch h2 {
+      font-family: var(--display);
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      margin: 0 0 10px;
+    }
+    .punch p {
+      margin: 0 auto;
+      max-width: 42rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+    }
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 640px;
+      font-size: 13px;
+    }
+    table.compare th,
+    table.compare td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    table.compare th {
+      font-family: var(--display);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+    }
+    table.compare th.hp {
+      color: var(--orange);
+      background: rgba(243,156,18,0.1);
+    }
+    table.compare td.hp {
+      background: rgba(243,156,18,0.06);
+      color: var(--text);
+      font-weight: 600;
+    }
+    table.compare tr:last-child th,
+    table.compare tr:last-child td { border-bottom: none; }
+    table.compare .yes { color: var(--ok); font-weight: 700; }
+    table.compare .no { color: #ff6b6b; font-weight: 700; }
+    .table-note {
+      margin: 12px 0 0;
+      font-size: 12px;
+      color: var(--soft);
+      text-align: center;
+    }
+
+    .cta-band {
+      margin: 0;
+      padding: 28px;
+      border-radius: calc(var(--radius) + 4px);
+      border: 1px solid rgba(243,156,18,0.35);
+      background:
+        radial-gradient(ellipse 70% 120% at 0% 50%, rgba(243,156,18,0.18), transparent 55%),
+        var(--bg-card);
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: var(--display);
+      margin: 0 0 8px;
+      font-size: 1.55rem;
+    }
+    .cta-band p { margin: 0 0 16px; color: var(--muted); }
+    .print-hint { margin-top: 10px; font-size: 12px; color: var(--soft); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 48px;
+      color: var(--soft);
+      font-size: 13px;
+      text-align: center;
+    }
+    footer strong { color: var(--muted); }
+
+    @media print {
+      .topbar, .print-hint { display: none !important; }
+      body { background: #fff; color: #111; font-size: 11pt; }
+      .hero, section { padding: 16px 0; }
+      .hero h1, .section-head h2, .feature-copy h3, .card h3, .cta-band h2, .punch h2 { color: #111; }
+      .lead, .section-head p, .card p, .feature-copy p, .feature-copy li, .cta-band p, .punch p, .table-note { color: #333; }
+      .pill, .card, .feature, .cta-band, .table-wrap, .punch, .spec-item {
+        background: #fff !important;
+        border-color: #ddd !important;
+        box-shadow: none !important;
+      }
+      table.compare th.hp, table.compare td.hp { background: #fff7e8 !important; }
+      .feature { break-inside: avoid; }
+      .wrap { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand-mini" href="#top">
+        HELLO<span class="dot" aria-hidden="true"></span>PROMPTEUR · STUDIO PRO
+      </a>
+      <nav class="topnav" aria-label="Sections">
+        <a href="#force">Notre force</a>
+        <a href="#impact">Impact</a>
+        <a href="#preuve-import">Preuve import</a>
+        <a href="#edition">Sur plateau</a>
+        <a href="#materiel">Matériel</a>
+        <a href="#vs">Vs marché</a>
+        <a href="#evolutif">Évolutif</a>
+        <a href="#client">Pour vous</a>
+      </nav>
+    </div>
+  </div>
+
+  <main id="top">
+    <header class="hero wrap">
+      <div class="eyebrow">Dossier commercial · Notre outil propriétaire</div>
+      <h1>
+        Nos équipes sont jusqu’à<br />
+        <span class="accent">90&nbsp;% plus efficaces</span><br />
+        que n’importe quelle autre
+      </h1>
+      <p class="lead">
+        HelloPrompteur Studio Pro n’est pas un logiciel qu’on revend.
+        C’est <strong style="color:var(--text)">notre outil propriétaire</strong>,
+        utilisé au quotidien par nos équipes pour vos plateaux.
+        Face à Autocue Explorer, Autocue Pioneer, QPro, Autoscript WinPlus IP :
+        on écrase sur l’import, l’édition, la mise en page et le last minute.
+        C’est pour ça qu’on est les meilleurs.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#force">Pourquoi c’est notre force</a>
+        <a class="btn btn-ghost" href="#materiel">Voir le matériel</a>
+      </div>
+      <div class="pill-row">
+        <span class="pill">Outil propriétaire</span>
+        <span class="pill">Utilisé par nos équipes</span>
+        <span class="pill">90 % plus efficaces</span>
+        <span class="pill">Matériel conception maison</span>
+        <span class="pill">Pour vos clients / plateaux</span>
+      </div>
+      <figure class="hero-shot">
+        <img
+          src="hero-editeur-couleurs.png"
+          alt="HelloPrompteur Studio Pro : script coloré avec cues, noms et surlignages — tel que nos équipes le voient"
+          width="1024"
+          height="575"
+        />
+      </figure>
+      <p class="caption">Texte riche, couleurs et cues — ce que nos équipes importent et lisent sur plateau</p>
+    </header>
+
+    <section id="force">
+      <div class="wrap">
+        <div class="punch">
+          <h2>Notre force = un logiciel à nous, pour vous</h2>
+          <p>
+            Les prestataires classiques travaillent avec les mêmes outils du marché :
+            Autocue Explorer, Autocue Pioneer, QPro, Autoscript WinPlus IP… lents, figés, peu adaptables.
+            <strong style="color:var(--text)">Nous avons conçu et on utilise notre propre logiciel</strong>
+            — HelloPrompteur Studio Pro — pour que nos équipes soient
+            <strong style="color:var(--text)">jusqu’à 90&nbsp;% plus efficaces</strong>
+            sur la prep et le live.
+            Quand vous nous confiez un plateau, vous bénéficiez de cet avantage.
+            Pas un catalogue logiciel : une équipe mieux armée.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <div class="ico">1</div>
+            <h3>Propriétaire</h3>
+            <p>On le développe. On le maîtrise. Personne d’autre n’a le même outil sur votre show.</p>
+          </article>
+          <article class="card">
+            <div class="ico">2</div>
+            <h3>Utilisé en interne</h3>
+            <p>Nos équipes s’en servent tous les jours pour vos clients — pas une démo marketing.</p>
+          </article>
+          <article class="card">
+            <div class="ico">3</div>
+            <h3>Avantage concurrentiel</h3>
+            <p>Vous ne « achetez » pas un soft. Vous gagnez une régie plus rapide, plus sûre, plus réactive.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Ce que ça change pour votre plateau</h2>
+          <p>Quatre preuves concrètes — là où les autres équipes perdent du temps, nous on avance.</p>
+        </div>
+        <div class="promise">
+          <article class="card">
+            <p class="num">Import</p>
+            <h3>Texte ultra fidèle</h3>
+            <p>Word, PDF, Excel… nos équipes reçoivent un texte propre, sans usine à reformater.</p>
+          </article>
+          <article class="card">
+            <p class="num">Édition</p>
+            <h3>Ultra rapide</h3>
+            <p>Couper, colorer, nettoyer, découper — en minutes. Les autres : en heures.</p>
+          </article>
+          <article class="card">
+            <p class="num">1 clic</p>
+            <h3>Mise en page instantanée</h3>
+            <p>Phrases aérées, blocs, runorder — le texte devient lisible tout de suite.</p>
+          </article>
+          <article class="card">
+            <p class="num">Live</p>
+            <h3>Last minute OK</h3>
+            <p>Le script bouge ? Nos équipes suivent. Pas de panique, pas de retard antenne.</p>
+          </article>
+        </div>
+
+        <div class="demo-video" id="preuve-import">
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            poster="hero-editeur-couleurs.png"
+          >
+            <source src="diff-import-original-vs-helloprompteur.mp4" type="video/mp4" />
+            Votre navigateur ne lit pas la vidéo — ouvrez
+            <a href="diff-import-original-vs-helloprompteur.mp4">le fichier MP4</a>.
+          </video>
+          <div class="demo-video-meta">
+            <h3>Import fidèle — à voir en vrai</h3>
+            <p>
+              Document original à côté du même fichier dans HelloPrompteur Studio Pro :
+              couleurs, surlignages et mise en forme conservés. Ce que nos équipes
+              utilisent quand votre texte arrive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="edition">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Sur le terrain, avec nos équipes</h2>
+          <p>Ce que nos opérateurs font vraiment — et pourquoi ça écrase le marché.</p>
+        </div>
+
+        <div class="grid-3" style="margin-bottom:24px">
+          <article class="card">
+            <div class="ico">01</div>
+            <h3>Importer sans tout casser</h3>
+            <p>Fichier client reçu → mise en page fidèle. Moins de retouches = plus de temps pour le fond.</p>
+          </article>
+          <article class="card">
+            <div class="ico">02</div>
+            <h3>Aérer en un clic</h3>
+            <p>Point + espace → phrases prêtes pour l’orateur. Chez les autres : tout à la main.</p>
+          </article>
+          <article class="card">
+            <div class="ico">03</div>
+            <h3>Découper en blocs / runorder</h3>
+            <p>Un script long devient un conducteur clair. On réordonne, on saute, on gère l’émission.</p>
+          </article>
+          <article class="card">
+            <div class="ico">04</div>
+            <h3>Changer le texte last minute</h3>
+            <p>Nouveau paragraphe, coupe, correction : on modifie sur place. Le live ne s’arrête pas.</p>
+          </article>
+          <article class="card">
+            <div class="ico">05</div>
+            <h3>Colorer / repérer flash</h3>
+            <p>Repères orateur en une touche. Nettoyage express des textes « sales ».</p>
+          </article>
+          <article class="card">
+            <div class="ico">06</div>
+            <h3>Du texte au défilement</h3>
+            <p>Prep et lecture dans le même outil. Zéro usine entre l’édition et l’antenne.</p>
+          </article>
+        </div>
+
+        <article class="feature">
+          <div class="feature-copy">
+            <h3>L’arme de nos opérateurs</h3>
+            <p>Ce n’est pas un logiciel « à vendre ». C’est ce qui rend nos équipes imbattables sur la prep.</p>
+            <ul>
+              <li><strong>Import fidèle</strong> — on ne recommence pas la mise en page</li>
+              <li><strong>Outils flash</strong> — aérer, colorer, nettoyer, découper</li>
+              <li><strong>Conducteur</strong> — blocs prêts pour votre show</li>
+            </ul>
+          </div>
+          <div>
+            <div class="feature-media">
+              <img src="hero-editeur-couleurs.png" alt="Script coloré dans HelloPrompteur Studio Pro" />
+            </div>
+            <p class="caption">Outil interne — force de la maison</p>
+          </div>
+        </article>
+
+        <article class="feature reverse">
+          <div class="feature-copy">
+            <h3>Résultat pour votre présentateur</h3>
+            <p>Un texte propre, aéré, prêt à lire — livré plus vite que chez n’importe quel concurrent équipé d’un autre logiciel PRO.</p>
+            <ul>
+              <li><strong>Phrases aérées</strong></li>
+              <li><strong>Repères visibles</strong></li>
+              <li><strong>Blocs dans le bon ordre</strong></li>
+            </ul>
+          </div>
+          <div>
+            <div class="feature-media">
+              <img src="prompteur-couleurs.png" alt="Texte coloré prêt pour le présentateur — HelloPrompteur Studio Pro" />
+            </div>
+            <p class="caption">Ce que lit votre présentateur</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="materiel" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Matériel — conception maison</h2>
+          <p>
+            Logiciel <strong style="color:var(--text)">et</strong> hardware.
+            Nous concevons nos propres prompteurs : caméra, Steadicam, Ronin, scène conférence et plasma.
+            Plus légers, plus compacts, plus simples à monter — pour un plateau propre et rapide.
+          </p>
+        </div>
+
+        <div class="punch">
+          <h2>Du logiciel au hardware : tout sous le même toit</h2>
+          <p>
+            La plupart des régies louent du matériel générique et bricolent ensuite.
+            <strong style="color:var(--text)">Nous fabriquons nos prompteurs</strong>
+            pour qu’ils collent à notre façon de travailler :
+            montage express, usage sans câble possible, et lisibilité maximale pour l’orateur.
+          </p>
+        </div>
+
+        <article class="feature">
+          <div class="feature-copy">
+            <div class="hw-tag">Caméra · Steadicam · Ronin</div>
+            <h3>Prompteur ultra compact — 2× plus léger</h3>
+            <p>
+              Conçu pour les axes mobiles : caméra épaule, Steadicam et gimbal type Ronin.
+              Le boîtier est pensé pour rester discret, stable et prêt en quelques secondes.
+            </p>
+            <ul>
+              <li><strong>2× plus léger</strong> que les solutions classiques du marché</li>
+              <li><strong>Plug &amp; play</strong> sur tiges (rods) <strong>15 mm</strong> ou <strong>19 mm</strong></li>
+              <li><strong>Vitre inclinable de 0° à 90°</strong> — s’adapte à chaque angle de prise de vue</li>
+              <li><strong>Totalement sans câble</strong> possible — liberté totale sur le plateau</li>
+              <li><strong>Moniteur HD 2500 nits</strong> — lisible même en plein soleil / plein projecteurs</li>
+            </ul>
+          </div>
+          <div>
+            <div class="photo-choice" role="tablist" aria-label="Choisir la photo">
+              <button type="button" class="is-active" data-photo="studio" aria-selected="true">Studio</button>
+              <button type="button" data-photo="ronin" aria-selected="false">Ronin</button>
+            </div>
+            <div class="feature-media photo-fit">
+              <img
+                id="materiel-camera-photo"
+                src="materiel-teleprompter-studio.jpg"
+                alt="Prompteur studio HelloPrompteur — caméra cinéma, vitre, écran noir"
+                width="1920"
+                height="1080"
+              />
+            </div>
+            <p class="caption" id="materiel-camera-caption">Prompteur studio — conception maison, écran éteint</p>
+          </div>
+        </article>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <strong>Poids</strong>
+            <span>Environ 2× plus léger que l’équivalent marché</span>
+          </div>
+          <div class="spec-item">
+            <strong>Fixation</strong>
+            <span>Rods 15 mm / 19 mm — montage plug &amp; play</span>
+          </div>
+          <div class="spec-item">
+            <strong>Vitre</strong>
+            <span>Inclinaison continue de 0° à 90°</span>
+          </div>
+          <div class="spec-item">
+            <strong>Câblage</strong>
+            <span>Mode entièrement sans fil possible</span>
+          </div>
+          <div class="spec-item">
+            <strong>Moniteur</strong>
+            <span>HD · 2500 nits — haute luminosité</span>
+          </div>
+          <div class="spec-item">
+            <strong>Usages</strong>
+            <span>Caméra · Steadicam · Ronin / gimbal</span>
+          </div>
+        </div>
+
+        <article class="feature" style="margin-top:28px">
+          <div class="feature-copy">
+            <div class="hw-tag">Conférence · Discours · Plateforme</div>
+            <h3>Prompteur Stage Obama</h3>
+            <p>
+              Le classique des grandes scènes et discours présidentiels :
+              deux vitres discrètes face à l’orateur, texte invisible pour le public,
+              confort de lecture maximal pour le conférencier.
+            </p>
+            <ul>
+              <li><strong>Version fixe</strong> — solide, fiable, installée pour la durée de l’événement</li>
+              <li><strong>Version motorisée</strong> — hauteur / position ajustables selon l’orateur et le décor</li>
+              <li><strong>Présence scénique propre</strong> — le public ne voit pas le texte</li>
+            </ul>
+          </div>
+          <div>
+            <div class="feature-media photo-fit">
+              <img src="materiel-stage-obama.png" alt="Prompteur Stage Obama conférence — paire fixe ou motorisée" width="1920" height="1080" />
+            </div>
+            <p class="caption">Prompteur conférence Stage — fixe ou motorisé</p>
+          </div>
+        </article>
+
+        <article class="feature reverse" style="margin-top:22px">
+          <div class="feature-copy">
+            <div class="hw-tag">Scène · Théâtre · Show</div>
+            <h3>Retours scène</h3>
+            <p>
+              Écrans au pied de scène pour les artistes, présentateurs et comédiens
+              qui doivent lire tout en gardant le contact avec le public.
+              Idéal quand un prompteur « vitre » n’est pas adapté au décor.
+            </p>
+            <ul>
+              <li><strong>Haute lisibilité</strong> depuis la scène</li>
+              <li><strong>Position basse</strong> — discret pour la caméra / le public</li>
+              <li><strong>Parfait pour</strong> spectacle, cérémonie, talk, live TV</li>
+            </ul>
+          </div>
+          <div>
+            <div class="feature-media photo-fit">
+              <img src="materiel-scene-plasma.png" alt="Retours scène HelloPrompteur — écrans plasma au sol" width="960" height="540" />
+            </div>
+            <p class="caption">Retours scène — écrans au pied de plateau</p>
+          </div>
+        </article>
+
+        <div class="grid-3" style="margin-top:28px">
+          <article class="card">
+            <div class="ico">M1</div>
+            <h3>Conception maison</h3>
+            <p>On conçoit et on fait évoluer le hardware comme le logiciel — pour coller au métier.</p>
+          </article>
+          <article class="card">
+            <div class="ico">M2</div>
+            <h3>Montage express</h3>
+            <p>Plug &amp; play rods, options sans câble : moins de câbles, moins de panne, plus de temps antenne.</p>
+          </article>
+          <article class="card">
+            <div class="ico">M3</div>
+            <h3>Toute la gamme</h3>
+            <p>Mobile (caméra / Steadicam / Ronin), conférence Obama, et plasma scène — un seul interlocuteur.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="vs">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Nos équipes vs le marché</h2>
+          <p>
+            Même métier. Eux : un autre logiciel PRO du marché.
+            Nous : HelloPrompteur Studio Pro, outil propriétaire. Jusqu’à 90&nbsp;% plus efficaces sur la prep et l’édition.
+          </p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th>Capacité édition / prep</th>
+                <th class="hp">Nos équipes (HelloPrompteur Studio Pro)</th>
+                <th>Autre logiciel PRO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Import de texte <strong>ultra fidèle</strong></td>
+                <td class="hp"><span class="yes">Oui</span> — prêt à travailler tout de suite</td>
+                <td><span class="no">Non comparable</span> — import cassé / à reformater</td>
+              </tr>
+              <tr>
+                <td>Édition / changements <strong>ultra rapides</strong></td>
+                <td class="hp"><span class="yes">Oui</span> — last minute sans panique</td>
+                <td><span class="no">Lent</span> — chaque change = perte de temps</td>
+              </tr>
+              <tr>
+                <td>Mise en page <strong>instantanée</strong></td>
+                <td class="hp"><span class="yes">Oui</span> — 1 clic, phrases prêtes</td>
+                <td><span class="no">Inexistant</span> — tout à la main</td>
+              </tr>
+              <tr>
+                <td>Découpe <strong>blocs / runorder</strong></td>
+                <td class="hp"><span class="yes">Oui</span> — 1 clic, dossiers, durées</td>
+                <td><span class="no">Lourd</span> — usine à gaz / souvent à la main</td>
+              </tr>
+              <tr>
+                <td>Couleurs / surlignage <strong>flash</strong></td>
+                <td class="hp"><span class="yes">Oui</span> — touches rapides</td>
+                <td><span class="no">Galère</span> — coloration lente ou peu pratique</td>
+              </tr>
+              <tr>
+                <td>Nettoyage texte express</td>
+                <td class="hp"><span class="yes">Oui</span> — 30 secondes</td>
+                <td><span class="no">Très long</span> — manuel pénible</td>
+              </tr>
+              <tr>
+                <td>Marqueurs + sauts</td>
+                <td class="hp"><span class="yes">Oui</span> — instantané</td>
+                <td><span class="no">Peu fluide</span> — absent ou gadget</td>
+              </tr>
+              <tr>
+                <td>Outil adaptable au plateau</td>
+                <td class="hp"><span class="yes">Le nôtre — on l’évolue</span></td>
+                <td><span class="no">Figé</span> — peu adaptable</td>
+              </tr>
+              <tr>
+                <td>Efficacité globale</td>
+                <td class="hp"><span class="yes">Jusqu’à ~90&nbsp;% plus efficaces</span></td>
+                <td><span class="no">Référence basse</span> — heures perdues</td>
+              </tr>
+              <tr>
+                <td>Temps « texte reçu → prêt antenne »</td>
+                <td class="hp"><span class="yes">Quelques minutes</span></td>
+                <td><span class="no">Beaucoup plus long</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">
+          Nos équipes, avec notre outil propriétaire, sont jusqu’à 90&nbsp;% plus efficaces
+          que des équipes équipées d’un autre logiciel PRO.
+        </p>
+      </div>
+    </section>
+
+    <section id="evolutif">
+      <div class="wrap">
+        <div class="punch">
+          <h2>On fait évoluer l’outil — pour vos problématiques</h2>
+          <p>
+            Autre avantage d’être propriétaire :
+            <strong style="color:var(--text)">on ajoute régulièrement des fonctions</strong>
+            pour répondre aux besoins réels de vos plateaux.
+            Un besoin particulier ? On l’intègre. Les autres disent non,
+            ou restent bloqués avec un logiciel figé depuis des années.
+          </p>
+        </div>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Besoin client = évolution</h3>
+            <p>On écoute le plateau. On adapte notre outil. Pas un « c’est comme ça ».</p>
+          </article>
+          <article class="card">
+            <h3>Mises à jour fréquentes</h3>
+            <p>Le logiciel avance avec nos shows — donc avec les vôtres.</p>
+          </article>
+          <article class="card">
+            <h3>Pas figé comme le marché</h3>
+            <p>Autocue Explorer, Autocue Pioneer, QPro, Autoscript WinPlus IP : peu adaptables. Nous : on maîtrise le code et le métier.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="client" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Ce que ça veut dire pour vous</h2>
+          <p>Réponses client — on ne vend pas le logiciel, on vend le résultat.</p>
+        </div>
+        <div class="grid-2">
+          <article class="card">
+            <h3>« Le texte arrive à la dernière minute »</h3>
+            <p>Nos équipes absorbent. Import fidèle + édition flash. Pas d’après-midi perdu à reformater.</p>
+          </article>
+          <article class="card">
+            <h3>« On change le script pendant la journée »</h3>
+            <p>Oui. On suit. C’est exactement pour ça qu’on a conçu l’outil en interne.</p>
+          </article>
+          <article class="card">
+            <h3>« Pourquoi pas une régie Autocue / QPro / Autoscript ? »</h3>
+            <p>Parce qu’elles travaillent avec les mêmes outils lents que tout le monde. Nous, on a le nôtre — et on est jusqu’à 90&nbsp;% plus efficaces.</p>
+          </article>
+          <article class="card">
+            <h3>« On peut acheter le logiciel ? »</h3>
+            <p>Non. C’est propriétaire. C’est notre force. Vous gagnez l’avantage en travaillant avec nous.</p>
+          </article>
+          <article class="card">
+            <h3>« Et si on a un besoin très spécifique ? »</h3>
+            <p>On ajoute des fonctions souvent. Votre problématique peut devenir une amélioration de notre outil.</p>
+          </article>
+          <article class="card">
+            <h3>« En une phrase ? »</h3>
+            <p>Vous ne choisissez pas un soft. Vous choisissez l’équipe la mieux armée du marché.</p>
+          </article>
+        </div>
+
+        <div class="cta-band" style="margin-top:28px">
+          <h2>Notre outil. Nos équipes. Votre plateau.</h2>
+          <p>
+            HelloPrompteur Studio Pro = avantage concurrentiel propriétaire.
+            Jusqu’à 90&nbsp;% plus efficaces — pour vos shows, pas pour une boutique logicielle.
+          </p>
+          <div class="cta-row" style="margin-bottom:0">
+            <a class="btn btn-primary" href="#vs">Revoir le tableau</a>
+            <a class="btn btn-ghost" href="#force">Notre force</a>
+          </div>
+          <p class="print-hint">
+            PDF : Chrome / Edge → <strong style="color:var(--muted)">Ctrl+P</strong> → Enregistrer au format PDF.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>HelloPrompteur Studio Pro</strong>
+      · Outil propriétaire · Matériel conception maison · Utilisé par nos équipes
+      · Dossier commercial — force concurrentielle
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var img = document.getElementById("materiel-camera-photo");
+      var caption = document.getElementById("materiel-camera-caption");
+      var buttons = document.querySelectorAll(".photo-choice [data-photo]");
+      if (!img || !caption || !buttons.length) return;
+
+      var views = {
+        studio: {
+          src: "materiel-teleprompter-studio.jpg",
+          alt: "Prompteur studio HelloPrompteur — caméra cinéma, vitre, écran noir",
+          caption: "Prompteur studio — conception maison, écran éteint"
+        },
+        ronin: {
+          src: "materiel-camera-ronin.png",
+          alt: "Prompteur Ronin HelloPrompteur — ultra compact, rods, moniteur HD",
+          caption: "Prompteur Ronin — conception maison, ultra compact"
+        }
+      };
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var key = btn.getAttribute("data-photo");
+          var view = views[key];
+          if (!view) return;
+          img.src = view.src;
+          img.alt = view.alt;
+          caption.textContent = view.caption;
+          buttons.forEach(function (b) {
+            var on = b === btn;
+            b.classList.toggle("is-active", on);
+            b.setAttribute("aria-selected", on ? "true" : "false");
+          });
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
