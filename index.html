@@ -393,6 +393,69 @@
       margin-bottom: 8px;
     }
 
+    .tarif-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    @media (max-width: 880px) {
+      .tarif-grid { grid-template-columns: 1fr; }
+    }
+    .tarif-card h3 {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      margin: 0 0 4px;
+    }
+    .tarif-card .tarif-sub {
+      margin: 0 0 14px;
+      color: var(--soft);
+      font-size: 0.85rem;
+    }
+    .tarif-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .tarif-list li {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .tarif-list li:first-child { border-top: none; padding-top: 0; }
+    .tarif-list .label { color: var(--text); font-weight: 600; }
+    .tarif-list .price {
+      flex-shrink: 0;
+      font-family: var(--display);
+      font-weight: 800;
+      color: var(--orange);
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+    .tarif-list .price span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--soft);
+      margin-left: 2px;
+    }
+    .tarif-note {
+      margin: 16px 0 0;
+      text-align: center;
+      color: var(--soft);
+      font-size: 0.88rem;
+    }
+    .tarif-highlight {
+      border-color: rgba(243,156,18,0.35);
+      background:
+        radial-gradient(ellipse 70% 80% at 100% 0%, rgba(243,156,18,0.1), transparent 55%),
+        var(--bg-card);
+    }
+
     .punch {
       border: 1px solid rgba(243,156,18,0.4);
       background:
@@ -519,6 +582,7 @@
         <a href="#edition">Sur plateau</a>
         <a href="#materiel">Matériel</a>
         <a href="#vs">Vs marché</a>
+        <a href="#tarifs">Tarifs</a>
         <a href="#evolutif">Évolutif</a>
         <a href="#client">Pour vous</a>
       </nav>
@@ -954,6 +1018,87 @@
       </div>
     </section>
 
+    <section id="tarifs" class="alt">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Nos tarifs</h2>
+          <p>Prestation et matériel — tous les prix en euros HT.</p>
+        </div>
+
+        <article class="card tarif-card tarif-highlight" style="margin-bottom:14px">
+          <h3>Opérateur prompteur</h3>
+          <p class="tarif-sub">Prestation équipe</p>
+          <ul class="tarif-list">
+            <li>
+              <span class="label">Opérateur prompteur</span>
+              <span class="price">500&nbsp;€<span>HT</span></span>
+            </li>
+          </ul>
+        </article>
+
+        <div class="tarif-grid">
+          <article class="card tarif-card">
+            <h3>LIVE</h3>
+            <p class="tarif-sub">Diffusion / conférence</p>
+            <ul class="tarif-list">
+              <li>
+                <span class="label">Station prompteur diffusion plasma</span>
+                <span class="price">200&nbsp;€<span>HT</span></span>
+              </li>
+              <li>
+                <span class="label">Conférencier fixe (paire)</span>
+                <span class="price">400&nbsp;€<span>HT</span></span>
+              </li>
+              <li>
+                <span class="label">Conférencier motorisé (paire)</span>
+                <span class="price">900&nbsp;€<span>HT</span></span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card tarif-card">
+            <h3>Tournage</h3>
+            <p class="tarif-sub">Prompteur selon taille d’écran</p>
+            <ul class="tarif-list">
+              <li>
+                <span class="label">15&nbsp;pouces</span>
+                <span class="price">150&nbsp;€<span>HT</span></span>
+              </li>
+              <li>
+                <span class="label">17&nbsp;pouces</span>
+                <span class="price">250&nbsp;€<span>HT</span></span>
+              </li>
+              <li>
+                <span class="label">19&nbsp;pouces</span>
+                <span class="price">350&nbsp;€<span>HT</span></span>
+              </li>
+              <li>
+                <span class="label">22&nbsp;pouces</span>
+                <span class="price">450&nbsp;€<span>HT</span></span>
+              </li>
+              <li>
+                <span class="label">32&nbsp;pouces</span>
+                <span class="price">550&nbsp;€<span>HT</span></span>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="card tarif-card" style="margin-top:14px">
+          <h3>Stabilisation</h3>
+          <p class="tarif-sub">Caméra / prise de vue</p>
+          <ul class="tarif-list">
+            <li>
+              <span class="label">Steadicam / Ronin</span>
+              <span class="price">250&nbsp;€<span>HT</span></span>
+            </li>
+          </ul>
+        </article>
+
+        <p class="tarif-note">Tous les tarifs sont exprimés en euros HT. Sur devis selon durée et configuration plateau.</p>
+      </div>
+    </section>
+
     <section id="evolutif">
       <div class="wrap">
         <div class="punch">
@@ -987,7 +1132,7 @@
       <div class="wrap">
         <div class="section-head">
           <h2>Ce que ça veut dire pour vous</h2>
-          <p>Réponses client — on ne vend pas le logiciel, on vend le résultat.</p>
+          <p>Réponses client — logiciel propriétaire, équipes rodées, résultat plateau.</p>
         </div>
         <div class="grid-2">
           <article class="card">
